@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+
+$loader-width: 5em;
+$loader-button-width: 1em;
+$loader-height: 100%;
+$loader-color: #666666;
+$loader-button-color: #ffffff;
+
+.c-loader {
+    display: flex;
+    justify-content: center;
+    height: $loader-height;
+
+    &--svg {
+        width: $loader-width;
+        stroke: $loader-color;
+        animation: rotate 1s linear infinite;
+
+        &-btn {
+            width: $loader-button-width;
+            stroke: $loader-button-color;
+        }
+    }
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}

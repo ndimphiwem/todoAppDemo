@@ -1,0 +1,101 @@
+<div class="col-sm-12 pt-5">
+  <div class="col-md-12">
+    <form [formGroup]="todoForm" (submit)="createToDoItem(todoForm, content)">
+      <h2>Add a note</h2>
+      <div class="row">
+        <div class="col">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Task Name"
+            formControlName="name"
+          />
+        </div>
+        <div class="col">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Category"
+            aria-describedby="Category"
+            formControlName="category"
+          />
+        </div>
+        <div class="col">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Task Priority"
+            aria-describedby="Priority"
+            formControlName="priority"
+          />
+        </div>
+        <div class="col">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Task Description"
+            aria-describedby="Description"
+            formControlName="description"
+          />
+        </div>
+        <div class="col-12 my-2">
+          <textarea
+            class="form-control"
+            placeholder="Task Content"
+            aria-describedby="emailHelp"
+            formControlName="contents"
+          ></textarea>
+        </div>
+        <div class="col">
+          <button
+            type="submit"
+            [disabled]="!todoForm.valid"
+            class="btn btn-lg btn-primary"
+          >
+            <ng-container *ngIf="!loading">
+                <span>Save</span>
+            </ng-container>
+            <ng-container *ngIf="loading">
+                <div class="c-loader">
+                  <svg class="c-loader--svg c-loader--svg-btn" viewBox="0 0 38 38">
+                    <g fill="none" fill-rule="evenodd">
+                      <g transform="translate(1 1)" stroke-width="2">
+                        <circle stroke-opacity=".5" cx="18" cy="18" r="18" />
+                        <path d="M36 18c0-9.94-8.06-18-18-18">
+                          <animateTransform
+                            attributeName="transform"
+                            type="rotate"
+                            from="0 18 18"
+                            to="360 18 18"
+                            repeatCount="indefinite"
+                          />
+                        </path>
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+            </ng-container>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<ng-template #content let-modal>
+  <div class="modal-header bg-success border-0">
+    <h4 class="modal-title text-white" id="modal-basic-title">Item Added!</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body bg-success">
+      <h3 class="text-white">
+          Your to do item has been added!
+      </h3>
+  </div>
+</ng-template>

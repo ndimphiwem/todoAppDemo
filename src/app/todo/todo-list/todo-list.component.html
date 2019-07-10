@@ -1,0 +1,38 @@
+<div class="container-fluid mh-100">
+  <ng-container *ngIf="!loading">
+    <ngb-accordion #acc="ngbAccordion">
+        <ngb-panel [title]=" item?.name" *ngFor="let item of items">
+            <ng-template ngbPanelContent>
+                <p>
+                    {{ item?.description }}
+                </p>
+                <p>
+                    {{ item?.contents }}
+                </p>
+            </ng-template>
+        </ngb-panel>
+    </ngb-accordion>
+  </ng-container>
+  <div class="row" *ngIf="loading">
+    <div class="col-12">
+      <div class="c-loader position-fixed w-100">
+        <svg class="c-loader--svg" viewBox="0 0 38 38">
+          <g fill="none" fill-rule="evenodd">
+            <g transform="translate(1 1)" stroke-width="2">
+              <circle stroke-opacity=".5" cx="18" cy="18" r="18" />
+              <path d="M36 18c0-9.94-8.06-18-18-18">
+                <animateTransform
+                  attributeName="transform"
+                  type="rotate"
+                  from="0 18 18"
+                  to="360 18 18"
+                  repeatCount="indefinite"
+                />
+              </path>
+            </g>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
